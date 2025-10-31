@@ -1,5 +1,5 @@
 name: "Cloudflare DDNS"
-version: "1.0.4"
+version: "1.0.5"
 slug: cloudflare-ddns
 description: "Automatically update Cloudflare DNS records with your public IP address"
 url: "https://github.com/favonia/cloudflare-ddns"

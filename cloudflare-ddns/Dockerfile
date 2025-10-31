@@ -20,4 +20,5 @@ COPY rootfs /
 COPY run.sh /
 RUN chmod a+x /run.sh && \
     chmod a+x /etc/services.d/cloudflare-ddns/run && \
-    chmod a+x /etc/services.d/cloudflare-ddns/finish
+    chmod a+x /etc/services.d/cloudflare-ddns/finish && \
+    chmod a+x /init 2>/dev/null || true

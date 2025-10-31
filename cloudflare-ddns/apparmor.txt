@@ -7,8 +7,8 @@ profile cloudflare-ddns flags=(attach_disconnected,mediate_deleted) {
   capability net_raw,
   capability net_admin,
 
-  # S6-Overlay
-  /init ix,
+  # S6-Overlay - ensure /init can be read and executed
+  /init rix,
   /bin/** ix,
   /usr/bin/** ix,
   /run/{s6,s6-rc*,service}/** ix,
@@ -26,6 +26,10 @@ profile cloudflare-ddns flags=(attach_disconnected,mediate_deleted) {
 
   # Access to options.json and other files within your addon
   /data/** rw,
+
+  # Allow shell to read files
+  /bin/bash rix,
+  /bin/sh rix,
 
   # Start new profile for service
   /usr/local/bin/ddns cx -> ddns,
