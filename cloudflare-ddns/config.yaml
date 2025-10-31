@@ -58,4 +58,4 @@ schema:
     - str?
   waf_lists:
     - str?
-image: "ghcr.io/{arch}-addon-cloudflare-ddns"
+image: "ghcr.io/jkker/addon-cloudflare-ddns"
