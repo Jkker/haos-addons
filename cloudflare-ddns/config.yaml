@@ -1,0 +1,61 @@
+name: "Cloudflare DDNS"
+version: "1.0.0"
+slug: cloudflare-ddns
+description: "Automatically update Cloudflare DNS records with your public IP address"
+url: "https://github.com/favonia/cloudflare-ddns"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+init: false
+startup: application
+boot: auto
+host_network: true
+map:
+  - addon_config:rw
+options:
+  cloudflare_api_token: ""
+  domains: []
+  proxied: false
+  ip4_provider: "cloudflare.trace"
+  ip6_provider: "cloudflare.trace"
+  update_cron: "@every 5m"
+  update_on_start: true
+  timezone: "UTC"
+  delete_on_stop: false
+  detection_timeout: "5s"
+  update_timeout: "30s"
+  cache_expiration: "6h"
+  emoji: true
+  quiet: false
+schema:
+  cloudflare_api_token: password
+  domains: 
+    - str
+  ip4_domains:
+    - str?
+  ip6_domains:
+    - str?
+  proxied: bool
+  ip4_provider: list(cloudflare.doh|cloudflare.trace|local|none)?
+  ip6_provider: list(cloudflare.doh|cloudflare.trace|local|none)?
+  update_cron: str?
+  update_on_start: bool?
+  timezone: str?
+  ttl: int(1,)?
+  record_comment: str?
+  delete_on_stop: bool?
+  detection_timeout: str?
+  update_timeout: str?
+  cache_expiration: str?
+  emoji: bool?
+  quiet: bool?
+  healthchecks_url: str?
+  uptimekuma_url: str?
+  shoutrrr_urls:
+    - str?
+  waf_lists:
+    - str?
+image: "ghcr.io/{arch}-addon-cloudflare-ddns"

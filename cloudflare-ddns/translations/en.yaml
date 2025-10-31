@@ -1,0 +1,70 @@
+configuration:
+  cloudflare_api_token:
+    name: Cloudflare API Token
+    description: Your Cloudflare API token with DNS edit permissions. Get it from https://dash.cloudflare.com/profile/api-tokens
+  domains:
+    name: Domains
+    description: List of domains to manage for both IPv4 and IPv6
+  ip4_domains:
+    name: IPv4 Domains
+    description: List of domains to manage for IPv4 only (A records)
+  ip6_domains:
+    name: IPv6 Domains
+    description: List of domains to manage for IPv6 only (AAAA records)
+  proxied:
+    name: Enable Cloudflare Proxy
+    description: Enable Cloudflare proxying to hide your IP and cache content (only for HTTP/HTTPS traffic)
+  ip4_provider:
+    name: IPv4 Detection Provider
+    description: How to detect your IPv4 address
+  ip6_provider:
+    name: IPv6 Detection Provider
+    description: How to detect your IPv6 address
+  update_cron:
+    name: Update Schedule
+    description: Cron expression or special value (@every 5m, @hourly, etc.) for update schedule
+  update_on_start:
+    name: Update on Start
+    description: Check and update IP addresses immediately when addon starts
+  timezone:
+    name: Timezone
+    description: Timezone for logging and scheduling (e.g., America/New_York, Europe/London)
+  ttl:
+    name: DNS TTL
+    description: Time-to-live for new DNS records in seconds (1 = automatic)
+  record_comment:
+    name: DNS Record Comment
+    description: Comment to add to newly created DNS records
+  delete_on_stop:
+    name: Delete Records on Stop
+    description: Delete managed DNS records when the addon stops (not recommended)
+  detection_timeout:
+    name: IP Detection Timeout
+    description: Timeout for each IP detection attempt (e.g., 5s, 10s)
+  update_timeout:
+    name: DNS Update Timeout
+    description: Timeout for each DNS update attempt (e.g., 30s, 1m)
+  cache_expiration:
+    name: Cache Expiration
+    description: How long to cache Cloudflare API responses (e.g., 6h, 12h)
+  emoji:
+    name: Use Emojis in Logs
+    description: Use emojis in log messages for better readability
+  quiet:
+    name: Quiet Mode
+    description: Reduce logging output
+  healthchecks_url:
+    name: Healthchecks URL
+    description: Healthchecks.io ping URL for monitoring (e.g., https://hc-ping.com/uuid)
+  uptimekuma_url:
+    name: Uptime Kuma URL
+    description: Uptime Kuma push URL for monitoring
+  shoutrrr_urls:
+    name: Shoutrrr Notification URLs
+    description: List of Shoutrrr URLs for notifications (Discord, Slack, email, etc.)
+  waf_lists:
+    name: WAF Lists (Experimental)
+    description: List of Cloudflare WAF lists to manage (format account-id/list-name)
+network:
+  Host Network:
+    description: Required for proper IPv6 support and local IP detection

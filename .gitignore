@@ -1,0 +1,21 @@
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
+*.tmp
+.build/
+build/
+
+# Secrets
+secrets.yaml
+*.secret
+.env
