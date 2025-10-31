@@ -13,12 +13,9 @@ RUN apk add --no-cache \
 # Copy the cloudflare-ddns binary from the official image
 COPY --from=favonia/cloudflare-ddns:latest /bin/ddns /usr/local/bin/ddns
 
+# Copy root filesystem
+COPY rootfs /
+
 # Copy run script
 COPY run.sh /
 RUN chmod a+x /run.sh
-
-# Set working directory
-WORKDIR /
-
-# Run script
-CMD ["/run.sh"]

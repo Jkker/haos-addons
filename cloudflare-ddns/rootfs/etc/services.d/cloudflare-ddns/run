@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Add-on: Cloudflare DDNS
+# Runs the Cloudflare DDNS service
+# ==============================================================================
+
+exec /run.sh
