@@ -64,6 +64,9 @@ jobs:
           flavor: |
             latest=${{ github.ref == 'refs/heads/main' }}
             suffix=-${{ matrix.arch }}
+        env:
+          # Force lowercase for container registry
+          DOCKER_METADATA_LOWERCASE_NAME: true
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -104,7 +107,9 @@ jobs:
 
       - name: Create and push manifest
         run: |
-          IMAGE_BASE="ghcr.io/${{ github.repository_owner }}/addon-${{ steps.info.outputs.slug }}"
+          # Convert owner to lowercase for container registry
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_BASE="ghcr.io/${OWNER_LC}/addon-${{ steps.info.outputs.slug }}"
           
           # Determine tag based on trigger
           if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
