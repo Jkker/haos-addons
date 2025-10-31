@@ -16,6 +16,8 @@ COPY --from=favonia/cloudflare-ddns:latest /bin/ddns /usr/local/bin/ddns
 # Copy root filesystem
 COPY rootfs /
 
-# Copy run script
+# Copy run script and set permissions
 COPY run.sh /
-RUN chmod a+x /run.sh
+RUN chmod a+x /run.sh && \
+    chmod a+x /etc/services.d/cloudflare-ddns/run && \
+    chmod a+x /etc/services.d/cloudflare-ddns/finish
