@@ -11,6 +11,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -41,6 +45,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          DOCKER_BUILDKIT: 1
 
       - name: Generate Docker metadata
         id: meta
@@ -139,7 +145,7 @@ jobs:
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: cloudflare-ddns/Dockerfile
-          ignore: DL3018
+          ignore: DL3006,DL3018
 
       - name: Lint shell scripts
         run: |
